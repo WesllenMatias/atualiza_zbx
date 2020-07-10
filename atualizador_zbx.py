@@ -18,8 +18,8 @@ else:
     print ("Versão: "+ versao[0])
 
 print ("\n -> Arquivos a Serem Backupeados:\n")
-arquivo1 = "/usr/zabbix/zabbix_server.conf"
-arquivo2 = "/usr/zabbix/zabbix_agentd.conf"
+arquivo1 = "/etc/zabbix/zabbix_server.conf"
+arquivo2 = "/etc/zabbix/zabbix_agentd.conf"
 obj1 = Path(arquivo1)
 server_conf = obj1.is_file()
 obj2 = Path(arquivo2)
