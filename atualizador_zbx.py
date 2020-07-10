@@ -97,7 +97,7 @@ except Exception as erro:
     sleep(1)
     print ("\n -> Dump do Banco de dados....\033[5;1;41m Falhou!!! \033[00;37m")
     sleep(1)
-    print ("\nProblemas ao se conectar ao Banco de dados para realizar o Backup, verifique se este é o servidor onde se encontra o banco do zabbix\n")
+    print ("\n ->> Problemas ao se conectar ao Banco de dados para realizar o Backup, \nverifique se este é o servidor onde se encontra o banco do zabbix\n")
     
 print ("\033[41;1;37m"+"                                                                                                 "+"\033[0;0m")
 
