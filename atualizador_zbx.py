@@ -80,22 +80,24 @@ try:
     print(" -> Backup de Arquivos Finalizado....\033[01;32mOK\033[00;37m \n")
 except Exception as erro:
     print("Não Foi possivel copiar os Arquivos\nErro: {}".format(erro.__class__))
-
-
+    
+    
     #mysqldump -u root -p Z@bb1x > /root/backup-zabbix/bkpzabbix.sql
     print("\n -> Realizando Dump do Banco dentro da Pasta de Backup\n")
     sleep(5)
     dump_db = "mysqldump -u" + config.usr_db + " -p " + config.host_db + " > "+ destino
 try:
     bkp = os.system(dump_db)
+    sleep(1)
     if bkp == True:
         print("\n -> Dump do Banco de dados....\033[01;32mOK\033[00;37m")
     else:
         pass
 except Exception as erro:
-    
+    sleep(1)
     print ("\n -> Dump do Banco de dados....\033[5;1;41m Falhou!!! \033[00;37m")
-    print ("\nProblemas ao se conectar ao Banco de dados para realizar o Backup, verifique se este é o servidor onde se encontra o banco do zabbix")
+    sleep(1)
+    print ("\nProblemas ao se conectar ao Banco de dados para realizar o Backup, verifique se este é o servidor onde se encontra o banco do zabbix\n")
     
 print ("\033[41;1;37m"+"                                                                                                 "+"\033[0;0m")
 
