@@ -78,7 +78,7 @@ try:
     copy(orig_agent, destino)
     print(" -> Backup de Arquivos     \033[01;32mOK\033[00;37m")
 except Exception as erro:
-    print(f"Não Foi possivel copiar os Arquivos\nErro: {erro.__class__}")
+    print("Não Foi possivel copiar os Arquivos\nErro: {}".format(erro.__class__))
 
 
 print ("\033[41;1;37m"+"                                                                                                 "+"\033[0;0m")
