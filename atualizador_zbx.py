@@ -85,7 +85,7 @@ except Exception as erro:
     #mysqldump -u root -p Z@bb1x > /root/backup-zabbix/bkpzabbix.sql
     print("\n -> Realizando Dump do Banco dentro da Pasta de Backup\n")
     sleep(5)
-    dump_db = "mysqldump -u" + config.usr_db + " -p " + config.pwd_db + " > "+ destino
+    dump_db = "mysqldump -u" + config.usr_db + " -p " + config.host_db + " > "+ destino
 try:
     bkp = os.system(dump_db)
     if bkp == True:
