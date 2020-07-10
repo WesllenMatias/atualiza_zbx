@@ -18,7 +18,7 @@ else:
     versao = platform.version().split()
     print ("Sistema Operacional: " + so)
     print ("Versão: "+ versao[0])
-
+sleep(1)
 # Testando se existe o a Pasta de backup
 pasta = Path("./backup_zbx/")
 exist_pasta = pasta.exists()
@@ -38,17 +38,17 @@ obj1 = Path(arquivo1)
 server_conf = obj1.is_file()
 obj2 = Path(arquivo2)
 agent_conf = obj2.is_file()
-
+sleep(0.5)
 if server_conf == False:
     print("\n* zabbix_server.conf....\033[05;31mNão Encontrado\033[00;37m")
 else:
     print("\n* zabbix_server.conf....\033[01;32mOK\033[00;37m")
-
+sleep(0.5)
 if agent_conf == False:
     print("* zabbix_agentd.conf....\033[05;31mNão Encontrado\033[00;37m ")
 else:
     print("* zabbix_agentd.conf....\033[01;32mOK\033[00;37m")
-
+sleep(0.5)
 
 diretorio1 = "/usr/sbin/zabbix_server"
 diretorio2 = "/usr/share/zabbix/"
@@ -60,12 +60,12 @@ if zbx_srv == False:
     print("* /usr/sbin/zabbix_server....\033[05;31mNão Encontrado\033[00;37m")
 else:
     print("* /usr/sbin/zabbix_server....\033[01;32mOK\033[00;37m")
-
+sleep(0.5)
 if zbx_share == False:
     print("* /usr/share/zabbix....\033[05;31mNão Encontrado\033[00;37m")
 else:
     print("* /usr/share/zabbix....\033[01;32mOK\033[00;37m")
-
+sleep(0.5)
 
 print ("\n -> Backup dos Arquivos: \n")
 sleep(3)
@@ -94,7 +94,7 @@ try:
         pass
 except Exception as erro:
     
-    print ("\n -> Dump do Banco de dados....\033[5;1;41m Falhou!!!\033[00;37m")
+    print ("\n -> Dump do Banco de dados....\033[5;1;41m Falhou!!! \033[00;37m")
     print ("\nProblemas ao se conectar ao Banco de dados para realizar o Backup, verifique se este é o servidor onde se encontra o banco do zabbix")
     
 print ("\033[41;1;37m"+"                                                                                                 "+"\033[0;0m")
