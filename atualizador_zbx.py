@@ -5,6 +5,7 @@ from time import sleep
 import platform
 from pathlib import Path
 from shutil import copy
+import config
 
 print ("\033[41;1;37m"+"                                      Atualização do Zabbix                                      "+"\033[0;0m")
 print ("\n -> Resumo de Informações Sobre o Sistema Operacional:\n")
@@ -30,7 +31,7 @@ else:
     sleep(3)
     print (" -> Diretório de Backup Criado    \033[01;32mOK\033[00;37m\n")
 
-print ("\n -> Arquivos a Serem Backupeados:\n")
+print ("\n -> Arquivos a Serem Backupeados:")
 arquivo1 = "/etc/zabbix/zabbix_server.conf"
 arquivo2 = "/etc/zabbix/zabbix_agentd.conf"
 obj1 = Path(arquivo1)
@@ -76,10 +77,24 @@ try:
     orig_agent = "/etc/zabbix/zabbix_agentd.conf"
     copy(orig_srv, destino)
     copy(orig_agent, destino)
-    print(" -> Backup de Arquivos....\033[01;32mOK\033[00;37m")
+    print(" -> Backup de Arquivos Finalizado....\033[01;32mOK\033[00;37m \n")
 except Exception as erro:
     print("Não Foi possivel copiar os Arquivos\nErro: {}".format(erro.__class__))
 
 
+    #mysqldump -u root -p Z@bb1x > /root/backup-zabbix/bkpzabbix.sql
+    print("\n -> Realizando Dump do Banco dentro da Pasta de Backup\n")
+    sleep(5)
+    dump_db = "mysqldump -u" + config.usr_db + " -p " + config.pwd_db + " > "+ destino
+try:
+    bkp = os.system(dump_db)
+    if bkp == True:
+        print("\n -> Dump do Banco de dados....\033[01;32mOK\033[00;37m")
+    else:
+        pass
+except Exception as erro:
+    print ("\n -> Dump do Banco de dados....\033[05;31m\033[00;37m")
+    print ("\nProblemas ao se conectar ao Banco de dados para realizar o Backup, verifique se este é o servidor onde se encontra o banco do zabbix")
+    
 print ("\033[41;1;37m"+"                                                                                                 "+"\033[0;0m")
 
