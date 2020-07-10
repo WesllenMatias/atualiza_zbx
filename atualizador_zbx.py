@@ -4,6 +4,7 @@ import datetime
 from time import sleep
 import platform
 from pathlib import Path
+import copy
 
 print ("\033[41;1;37m"+"                                      Atualização do Zabbix                                      "+"\033[0;0m")
 print ("\n -> Resumo de Informações Sobre o Sistema Operacional:\n")
@@ -16,6 +17,18 @@ else:
     versao = platform.version().split()
     print ("Sistema Operacional: " + so)
     print ("Versão: "+ versao[0])
+
+# Testando se existe o a Pasta de backup
+pasta = Path("./backup_zbx/")
+exist_pasta = pasta.exists()
+
+if exist_pasta == True:
+    print ("\n -> Diretório de Backup Criado    \033[01;32mOK\033[00;37m\n")
+else:
+    os.mkdir("backup_zbx")
+    print ("\n -> Criando diretório de Backup...\n")
+    sleep(3)
+    print (" -> Diretório de Backup Criado    \033[01;32mOK\033[00;37m\n")
 
 print ("\n -> Arquivos a Serem Backupeados:\n")
 arquivo1 = "/etc/zabbix/zabbix_server.conf"
@@ -45,6 +58,9 @@ zbx_share = obj4.exists()
 if zbx_srv == False:
     print("* /usr/sbin/zabbix_server    \033[05;31mNão Encontrado\033[00;37m")
 else:
+#    try:
+#        orig_serv = "/etc/zabbix/zabbix_server.conf"
+#        dest_serv = "/root/backup_zbx/"
     print("* /usr/sbin/zabbix_server    \033[01;32mOK\033[00;37m")
 
 if zbx_share == False:
@@ -52,6 +68,8 @@ if zbx_share == False:
 else:
     print("* /usr/share/zabbix    \033[01;32mOK\033[00;37m")
 
+
+    
 
 
 
