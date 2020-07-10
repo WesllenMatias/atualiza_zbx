@@ -93,7 +93,8 @@ try:
     else:
         pass
 except Exception as erro:
-    print ("\n -> Dump do Banco de dados....\033[05;31m\033[00;37m")
+    
+    print ("\n -> Dump do Banco de dados....\033[05;31m Falhou!!!\033[00;37m")
     print ("\nProblemas ao se conectar ao Banco de dados para realizar o Backup, verifique se este é o servidor onde se encontra o banco do zabbix")
     
 print ("\033[41;1;37m"+"                                                                                                 "+"\033[0;0m")
