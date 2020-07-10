@@ -4,7 +4,7 @@ import datetime
 from time import sleep
 import platform
 from pathlib import Path
-import copy
+from shutil import copy
 
 print ("\033[41;1;37m"+"                                      Atualização do Zabbix                                      "+"\033[0;0m")
 print ("\n -> Resumo de Informações Sobre o Sistema Operacional:\n")
@@ -58,9 +58,6 @@ zbx_share = obj4.exists()
 if zbx_srv == False:
     print("* /usr/sbin/zabbix_server    \033[05;31mNão Encontrado\033[00;37m")
 else:
-#    try:
-#        orig_serv = "/etc/zabbix/zabbix_server.conf"
-#        dest_serv = "/root/backup_zbx/"
     print("* /usr/sbin/zabbix_server    \033[01;32mOK\033[00;37m")
 
 if zbx_share == False:
@@ -69,9 +66,19 @@ else:
     print("* /usr/share/zabbix    \033[01;32mOK\033[00;37m")
 
 
-    
-
-
+print ("\n -> Backup dos Arquivos: \n")
+sleep(3)
+print (" -> Copiando Arquivos...\n")
+sleep(1)
+try:
+    orig_srv = "/etc/zabbix/zabbix_server.conf"
+    destino = "./backup_zbx/"
+    orig_agent = "/etc/zabbix/zabbix_agentd.conf"
+    copy(orig_srv, destino)
+    copy(orig_agent, destino)
+    print(" -> Backup de Arquivos     \033[01;32mOK\033[00;37m")
+except Exception as erro:
+    print(f"Não Foi possivel copiar os Arquivos\nErro: {erro.__class__}")
 
 
 print ("\033[41;1;37m"+"                                                                                                 "+"\033[0;0m")
