@@ -39,14 +39,14 @@ obj2 = Path(arquivo2)
 agent_conf = obj2.is_file()
 
 if server_conf == False:
-    print("\n* zabbix_server.conf    \033[05;31mNão Encontrado\033[00;37m")
+    print("\n* zabbix_server.conf....\033[05;31mNão Encontrado\033[00;37m")
 else:
-    print("\n* zabbix_server.conf    \033[01;32mOK\033[00;37m")
+    print("\n* zabbix_server.conf....\033[01;32mOK\033[00;37m")
 
 if agent_conf == False:
-    print("* zabbix_agentd.conf    \033[05;31mNão Encontrado\033[00;37m ")
+    print("* zabbix_agentd.conf....\033[05;31mNão Encontrado\033[00;37m ")
 else:
-    print("* zabbix_agentd.conf    \033[01;32mOK\033[00;37m")
+    print("* zabbix_agentd.conf....\033[01;32mOK\033[00;37m")
 
 
 diretorio1 = "/usr/sbin/zabbix_server"
@@ -56,14 +56,14 @@ zbx_srv = obj3.is_file()
 obj4 = Path(diretorio2)
 zbx_share = obj4.exists()
 if zbx_srv == False:
-    print("* /usr/sbin/zabbix_server    \033[05;31mNão Encontrado\033[00;37m")
+    print("* /usr/sbin/zabbix_server....\033[05;31mNão Encontrado\033[00;37m")
 else:
-    print("* /usr/sbin/zabbix_server    \033[01;32mOK\033[00;37m")
+    print("* /usr/sbin/zabbix_server....\033[01;32mOK\033[00;37m")
 
 if zbx_share == False:
-    print("* /usr/share/zabbix    \033[05;31mNão Encontrado\033[00;37m")
+    print("* /usr/share/zabbix....\033[05;31mNão Encontrado\033[00;37m")
 else:
-    print("* /usr/share/zabbix    \033[01;32mOK\033[00;37m")
+    print("* /usr/share/zabbix....\033[01;32mOK\033[00;37m")
 
 
 print ("\n -> Backup dos Arquivos: \n")
@@ -76,7 +76,7 @@ try:
     orig_agent = "/etc/zabbix/zabbix_agentd.conf"
     copy(orig_srv, destino)
     copy(orig_agent, destino)
-    print(" -> Backup de Arquivos     \033[01;32mOK\033[00;37m")
+    print(" -> Backup de Arquivos....\033[01;32mOK\033[00;37m")
 except Exception as erro:
     print("Não Foi possivel copiar os Arquivos\nErro: {}".format(erro.__class__))
 
