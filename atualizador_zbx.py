@@ -85,7 +85,7 @@ except Exception as erro:
     #mysqldump -u root -p Z@bb1x > /root/backup-zabbix/bkpzabbix.sql
     print("\n -> Realizando Dump do Banco dentro da Pasta de Backup\n")
     sleep(5)
-    dump_db = "mysqldump -u" + config.usr_db + " -p " + config.host_db + " > "+ destino
+    dump_db = "mysqldump -u " + config.usr_db + " -p " + config.host_db + " > "+ destino
 try:
     bkp = os.system(dump_db)
     sleep(1)
@@ -100,4 +100,3 @@ except Exception as erro:
     print ("\n ->> Problemas ao se conectar ao Banco de dados para realizar o Backup, \nverifique se este é o servidor onde se encontra o banco do zabbix\n")
     
 print ("\033[41;1;37m"+"                                                                                                 "+"\033[0;0m")
-
