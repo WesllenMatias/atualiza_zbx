@@ -55,7 +55,7 @@ diretorio1 = "/usr/sbin/zabbix_server"
 diretorio2 = "/usr/share/zabbix/"
 obj3 = Path(diretorio1)
 zbx_srv = obj3.is_file()
-obj4 = Path(diretorio2)´
+obj4 = Path(diretorio2)
 zbx_share = obj4.exists()
 if zbx_srv == False:
     print("* /usr/sbin/zabbix_server....\033[05;31mNão Encontrado\033[00;37m")
