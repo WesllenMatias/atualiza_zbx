@@ -68,6 +68,7 @@ else:
     print("* /usr/share/zabbix....\033[01;32mOK\033[00;37m")
 sleep(0.5)
 
+
 try:
     orig_srv = "/etc/zabbix/zabbix_server.conf"
     destino = "./backup_zbx/"
