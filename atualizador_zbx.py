@@ -62,10 +62,12 @@ if zbx_srv == False:
 else:
     print("* /usr/sbin/zabbix_server....\033[01;32mOK\033[00;37m")
 sleep(0.5)
-if zbx_share == False:            sleep            sleep(1)
-            print("")(1)
-            print("")
-sleep(1)
+if zbx_share == False:
+    print("* /usr/share/zabbix....\033[05;31mNão Encontrado\033[00;37m")
+else:
+    print("* /usr/share/zabbix....\033[01;32mOK\033[00;37m")
+sleep(0.5)
+
 try:
     orig_srv = "/etc/zabbix/zabbix_server.conf"
     destino = "./backup_zbx/"
