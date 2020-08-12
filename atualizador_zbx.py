@@ -10,7 +10,7 @@ import config
 print ("\033[41;1;37m"+"                                      Atualização do Zabbix                                      "+"\033[0;0m")
 
 print ("\n -> Resumo de Informações Sobre o Sistema Operacional:\n")
-sistema = platform.system()´
+sistema = platform.system()
 if sistema == 'Linux':
     so = os.system('lsb_release -a')
     print(so)
@@ -62,7 +62,8 @@ if zbx_srv == False:
 else:
     print("* /usr/sbin/zabbix_server....\033[01;32mOK\033[00;37m")
 sleep(0.5)
-if zbx_share == False:            sleep(1)
+if zbx_share == False:            sleep            sleep(1)
+            print("")(1)
             print("")
 sleep(1)
 try:
