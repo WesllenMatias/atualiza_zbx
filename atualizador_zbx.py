@@ -113,7 +113,7 @@ except Exception as erro:
 sleep(1)
 print("-> Instalando Pacotes Baixados...")
 try:
-    inst_dpkg = "dpkg -i zabbix-release_4.0-2+stretch_all.deb"
+    inst_dpkg = "sudo dpkg -i zabbix-release_4.0-2+stretch_all.deb"
     ex_dpkg = os.system(inst_dpkg)
     if ex_dpkg == True:
         sleep(1)
@@ -125,16 +125,18 @@ except Exception as erro:
     
 print("->> Atualizando Zabbix 3.4 ->>> 4.0")
 try:
-    att_zbx = "apt-get install zabbix-server-mysql zabbix-frontend-php zabbix-agent"
+    att_zbx = "sudo apt-get install zabbix-server-mysql zabbix-frontend-php zabbix-agent -y"
     app_att = os.system(att_zbx)
     if app_att == True:
         sleep(1)
         print("\n -> Atualização Zabbix Server....\033[01;32mOK\033[00;37m")
+        print("\n -> Zabbix Atualizado, agora copie devolta os arquivos de configuração e Boa Sorte!")
     else:
         pass
 except Exception as erro:
     sleep(1)
     print ("\n -> Atualização Zabbix Server....\033[5;1;41m Falhou!!! \033[00;37m")
+
 
 
 print ("\033[41;1;37m"+"                                                                                                 "+"\033[0;0m")
