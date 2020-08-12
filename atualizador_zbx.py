@@ -8,6 +8,7 @@ from shutil import copy
 import config
 
 print ("\033[41;1;37m"+"                                      Atualização do Zabbix                                      "+"\033[0;0m")
+
 print ("\n -> Resumo de Informações Sobre o Sistema Operacional:\n")
 sistema = platform.system()
 if sistema == 'Linux':
