@@ -10,7 +10,7 @@ import config
 print ("\033[41;1;37m"+"                                      Atualização do Zabbix                                      "+"\033[0;0m")
 
 print ("\n -> Resumo de Informações Sobre o Sistema Operacional:\n")
-sistema = platform.system()
+sistema = platform.system()´
 if sistema == 'Linux':
     so = os.system('lsb_release -a')
     print(so)
@@ -34,7 +34,7 @@ else:
 
 print ("\n -> Arquivos a Serem Backupeados:")
 arquivo1 = "/etc/zabbix/zabbix_server.conf"
-arquivo2 = "/etc/zabbix/zabbix_agentd.conf"
+arquivo2 = "/etc/zabbix/zabbix_agentd.conf"´
 obj1 = Path(arquivo1)
 server_conf = obj1.is_file()
 obj2 = Path(arquivo2)
@@ -55,22 +55,15 @@ diretorio1 = "/usr/sbin/zabbix_server"
 diretorio2 = "/usr/share/zabbix/"
 obj3 = Path(diretorio1)
 zbx_srv = obj3.is_file()
-obj4 = Path(diretorio2)
+obj4 = Path(diretorio2)´
 zbx_share = obj4.exists()
 if zbx_srv == False:
     print("* /usr/sbin/zabbix_server....\033[05;31mNão Encontrado\033[00;37m")
 else:
     print("* /usr/sbin/zabbix_server....\033[01;32mOK\033[00;37m")
 sleep(0.5)
-if zbx_share == False:
-    print("* /usr/share/zabbix....\033[05;31mNão Encontrado\033[00;37m")
-else:
-    print("* /usr/share/zabbix....\033[01;32mOK\033[00;37m")
-sleep(0.5)
-
-print ("\n -> Backup dos Arquivos: \n")
-sleep(3)
-print (" -> Copiando Arquivos...\n")
+if zbx_share == False:            sleep(1)
+            print("")
 sleep(1)
 try:
     orig_srv = "/etc/zabbix/zabbix_server.conf"
@@ -100,4 +93,44 @@ except Exception as erro:
     sleep(1)
     print ("\n ->> Problemas ao se conectar ao Banco de dados para realizar o Backup, \nverifique se este é o servidor onde se encontra o banco do zabbix\n")
     
+print ("-> Baixando arquivos Necessários...")
+sleep(1)
+try:
+    get_zbx = "wget https://repo.zabbix.com/zabbix/4.0/debian/pool/main/z/zabbix-release/zabbix-release_4.0-2+stretch_all.deb"
+    dw_arq = os.system(get_zbx)
+    if dw_arq == True:
+        print("\n -> Baixar arquivos Necessários....\033[01;32mOK\033[00;37m")
+    else:
+        pass
+except Exception as erro:
+    sleep(1)
+    print ("\n -> Baixar arquivos Necessários....\033[5;1;41m Falhou!!! \033[00;37m")
+
+sleep(1)
+print("-> Instalando Pacotes Baixados...")
+try:
+    inst_dpkg = "dpkg -i zabbix-release_4.0-2+stretch_all.deb"
+    ex_dpkg = os.system(inst_dpkg)
+    if ex_dpkg == True:
+        sleep(1)
+        print("\n -> Instalação de Pacotes Necessários....\033[01;32mOK\033[00;37m")
+    else:
+        pass
+except Exception as erro:
+    print ("\n -> Instalação de Pacotes Necessários....\033[5;1;41m Falhou!!! \033[00;37m")
+    
+print("->> Atualizando Zabbix 3.4 ->>> 4.0")
+try:
+    att_zbx = "apt-get install zabbix-server-mysql zabbix-frontend-php zabbix-agent"
+    app_att = os.system(att_zbx)
+    if app_att == True:
+        sleep(1)
+        print("\n -> Atualização Zabbix Server....\033[01;32mOK\033[00;37m")
+    else:
+        pass
+except Exception as erro:
+    sleep(1)
+    print ("\n -> Atualização Zabbix Server....\033[5;1;41m Falhou!!! \033[00;37m")
+
+
 print ("\033[41;1;37m"+"                                                                                                 "+"\033[0;0m")
